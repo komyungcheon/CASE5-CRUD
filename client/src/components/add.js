@@ -20,7 +20,7 @@ export default function AddTour() {
         });
     }
     return (
-        <div className="container w-25 shadow-sm p-3 mb-5 bg-body rounded mt-5">
+        <div className="container w-50 shadow-sm p-3 mb-5 bg-body rounded mt-5">
             <h1 className="text-center">Thêm Tour</h1>
             <input
                 type="text"
@@ -32,7 +32,7 @@ export default function AddTour() {
             />
             <br />
             <input
-                type="text"
+                type="number"
                 placeholder="Nhập Giá"
                 name="price"
                 value={tour.price}
@@ -41,16 +41,15 @@ export default function AddTour() {
             />
             <br />
 
-            <input
-                type="text"
+            <textarea cols="30" rows="5"
                 placeholder="Nhập Mô Tả"
                 name="description"
                 value={tour.description}
                 className="form-control"
                 onChange={handleChange}
-            />
+            ></textarea>
             <br />
-            <div>
+            <div className="d-flex justify-content-center">
                 <button
                     type="button"
                     className="btn btn-primary" style={{marginRight:'10px'}}

@@ -3,7 +3,7 @@ import AddTour from './components/add';
 import DetailTour from './components/detail';
 import EditTour from './components/edit';
 import ListTour from './components/list';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (

@@ -25,7 +25,7 @@ export default function EditTour() {
         });
     }
     return (
-        <div className="container w-25 shadow-sm p-3 mb-5 bg-body rounded mt-5">
+        <div className="container w-50 shadow-sm p-3 mb-5 bg-body rounded mt-5">
             <h1>Edit Tour</h1>
             <input
                 type="text"
@@ -37,7 +37,7 @@ export default function EditTour() {
             />
             <br />
             <input
-                type="text"
+                type="number"
                 className="form-control"
                 placeholder="Enter Price"
                 name="price"
@@ -45,16 +45,16 @@ export default function EditTour() {
                 onChange={handleChange}
             />
             <br />
-            <input
-                type="text"
+            <textarea cols="30" rows="5"   
                 className="form-control"
                 placeholder="Enter Description"
                 name="description"
                 value={tour.description}
                 onChange={handleChange}
-            />
+            >
+            </textarea>
             <br />
-            <div>
+            <div className="d-flex justify-content-center">
                 <button
                     type="button"
                     className="btn btn-primary" style={{marginRight:'10px'}}

@@ -15,9 +15,9 @@ export default function ListTour() {
     const deleteTour = (id) => {
         if (window.confirm("Bạn có chắc muốn xóa!")) {
             axios.delete(`http://localhost:8000/tuors/${id}`).then(() => {
-                let index = list.findIndex(tour => tour.id === id);
-                list.splice(index, 1);
-                setList([...list])
+                axios.get("http://localhost:8000/tuors").then((response) => {
+                    setList(response.data);
+                })
             })
         }
     };
