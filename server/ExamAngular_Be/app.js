@@ -7,7 +7,7 @@ app.listen(8000, () => {
     console.log("Server running on port 8000");
 });
 
-const tuors = [
+const products = [
     {
         id: 1,
         title: 'Sapa',
@@ -34,56 +34,56 @@ const tuors = [
     },
 ];
 
-app.get("/tuors", (req, res) => {
-    res.json(tuors);
+app.get("/products", (req, res) => {
+    res.json(products);
 });
-app.get("/tuors/:id", (req, res) => {
+app.get("/products/:id", (req, res) => {
     const id = +req.params.id;
-    const index = findtuorIndex(id);
+    const index = findProductIndex(id);
     if(index !== -1) {
-        res.json(tuors[index]);
+        res.json(products[index]);
     } else {
         res.status(404).json({message: 'Not found'});
     }
 });
-app.post("/tuors", (req, res) => {
-    const tuor = {
+app.post("/products", (req, res) => {
+    const product = {
         id: (new Date()).getTime(),
         title: req.body.title,
         price: req.body.price,
         description: req.body.description
     };
-    tuors.push(tuor);
-    res.json(tuor);
+    products.push(product);
+    res.json(product);
 });
-app.delete("/tuors/:id", (req, res) => {
+app.delete("/products/:id", (req, res) => {
     const id = +req.params.id;
-    const index = findtuorIndex(id);
+    const index = findProductIndex(id);
     if(index !== -1) {
-        tuors.splice(index, 1);
-        res.json({message: 'tuor deleted', id: id});
+        products.splice(index, 1);
+        res.json({message: 'product deleted', id: id});
     } else {
         res.status(404).json({message: 'Not found'});
     }
 });
 
-app.put("/tuors/:id", (req, res) => {
+app.put("/products/:id", (req, res) => {
     const id = +req.params.id;
-    const index = findtuorIndex(id);
+    const index = findProductIndex(id);
     if(index !== -1) {
-        const tuor = tuors[index];
-        tuor.title = req.body.title;
-        tuor.price = req.body.price;
-        tuor.description = req.body.description;
-        res.json(tuor);
+        const product = products[index];
+        product.title = req.body.title;
+        product.price = req.body.price;
+        product.description = req.body.description;
+        res.json(product);
     } else {
         res.status(404).json({message: 'Not found'});
     }
 });
 
-function findtuorIndex(id) {
-    for(let i = 0; i < tuors.length; i++) {
-        if(tuors[i].id === id) {
+function findProductIndex(id) {
+    for(let i = 0; i < products.length; i++) {
+        if(products[i].id === id) {
             return i;
         }
     }

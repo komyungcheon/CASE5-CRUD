@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function AddTour() {
+export default function AddProduct() {
     const navigate = useNavigate();
-    const [tour, setTour] = useState({
+    const [product, setProduct] = useState({
         title: "",
         price: "",
         description: "",
@@ -12,21 +12,23 @@ export default function AddTour() {
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        setTour({ ...tour, [name]: value });
+        setProduct({ ...product, [name]: value });
     };
     const handleAdd = () => {
-        axios.post("http://localhost:8000/tuors", tour).then(() => {
-            navigate("/");
-        });
+        if (window.confirm("Thêm mới thành công!")) {
+            axios.post("http://localhost:4000/products", product).then(() => {
+                navigate("/");
+            });
+        }
     }
     return (
         <div className="container w-50 shadow-sm p-3 mb-5 bg-body rounded mt-5">
-            <h1 className="text-center">Thêm Tour</h1>
+            <h1 className="text-center">Thêm Sản phẩm</h1>
             <input
                 type="text"
                 placeholder="Nhập Tên"
                 name="title"
-                value={tour.tilte}
+                value={product.title}
                 className="form-control"
                 onChange={handleChange}
             />
@@ -35,7 +37,7 @@ export default function AddTour() {
                 type="number"
                 placeholder="Nhập Giá"
                 name="price"
-                value={tour.price}
+                value={product.price}
                 className="form-control"
                 onChange={handleChange}
             />
@@ -44,7 +46,7 @@ export default function AddTour() {
             <textarea cols="30" rows="5"
                 placeholder="Nhập Mô Tả"
                 name="description"
-                value={tour.description}
+                value={product.description}
                 className="form-control"
                 onChange={handleChange}
             ></textarea>
@@ -52,14 +54,14 @@ export default function AddTour() {
             <div className="d-flex justify-content-center">
                 <button
                     type="button"
-                    className="btn btn-primary" style={{marginRight:'10px'}}
+                    className="btn btn-success" style={{marginRight:'10px'}}
                     onClick={handleAdd}
                 >
-                    Thêm Mới
+                    Thêm Mới Sản Phẩm
                 </button>
                 <button
                     type="button"
-                    className="btn btn-outline-primary"
+                    className="btn btn-primary"
                     onClick={() => {
                         navigate("/");
                     }}
